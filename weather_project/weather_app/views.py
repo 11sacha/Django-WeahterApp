@@ -32,5 +32,9 @@ def fetch_weather_and_forecast(city, api_key, current_weather_url, forecast_url)
         daily_forecasts.append({
             'day': datetime.datetime.fromtimestamp(daily_data['dt'].strftime('%A')),
             'min_temp': round(daily_data['temp']['min'] - 273.15, 2),
-            'max_temp': round(daily_data['temp']['max'] - 273.15, 2)
+            'max_temp': round(daily_data['temp']['max'] - 273.15, 2),
+            'description': daily_data['weather'][0]['description'],
+            'icon': daily_data['weahter'][0]['icon'],
         })
+
+    return weather_data, daily_forecasts
